@@ -1,3 +1,24 @@
+
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.getElementsByTagName("button");
+
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            let hand = this.getAttribute("data-type");
+            console.log(hand);
+            oponentSign(); 
+        })
+
+        
+    
+    }
+})
+
+
+/**
+ * This functions is selecting Game to be played along with Rules to display next to the game area
+ */
+
 function gameSelect() {
 
     let standardGame = document.getElementById('standard-game');
@@ -15,32 +36,70 @@ function gameSelect() {
 
 }
 
-
+/**
+ * This function explains rules of Standard Game
+ */
 function standardGameRules() {
     let standardGameRules = document.getElementById('rule');
 
-    standardGameRules.innerHTML += "<h2>Rock Paper Scissors Rules</h2><p>Rock Paper Scissors is a zero sum game that is usually played by two people using their hands and no tools. The idea is to make shapes with an outstretched hand where each shape will have a certain degree of power and will lead to an outcome.</p><br><p>Although the game has a lot of complexity to it, the rules to play it are pretty simple.The game is played where players deliver hand signals that will represent the elements of the game; rock, paper and scissors.</p> <h3>The outcome of the game is determined by 3 simple rules:</h3> <p>Rock wins against scissors. </p><p>Scissors win against paper. </p><p>Paper wins against rock.</p>";
+    standardGameRules.innerHTML += `<h2>Rock Paper Scissors Rules</h2>
+    <p>Rock Paper Scissors is a zero sum game that is usually played by two people using their hands and no tools. The idea is to make shapes with an outstretched hand where each shape will have a certain degree of power and will lead to an outcome.</p>
+    <br>
+    <p>Although the game has a lot of complexity to it, the rules to play it are pretty simple.The game is played where players deliver hand signals that will represent the elements of the game; rock, paper and scissors.</p>
+    <h3>The outcome of the game is determined by 3 simple rules:</h3> 
+    <p>Rock wins against scissors. </p>
+    <p>Scissors win against paper. </p>
+    <p>Paper wins against rock.</p>`;
 }
 
+/**
+ * This function explains rules of Advanced Game
+ */
 function advancedGameRules() {
     let advancedGameRules = document.getElementById('rule');
-    advancedGameRules.innerHTML += "<h2>Rock, Paper, Scissors, Lizard, Spock</h2>"
-    advancedGameRules.innerHTML += "<p>Rock, Paper, Scissors, Lizard, Spock is a game of chance that expands. It is first used to settle a dispute about what to watch on TV between Sheldon and Raj in 'The Lizard-Spock Expansion'.</p>"
-    advancedGameRules.innerHTML += "<h3>Rules:</h3>"
-    advancedGameRules.innerHTML += "<p>The game is an expansion on the game Rock, Paper, Scissors. Each player picks a variable and reveals it at the same time. The winner is the one who defeats the others. In a tie, the process is repeated until a winner is found.</p>"
-    advancedGameRules.innerHTML += "<p>Almost always, the boys will all pick Spock at the same time and tie over and over again.</p>"
-    advancedGameRules.innerHTML += "<p>Scissors cuts Paper</p>"
-    advancedGameRules.innerHTML += "<p>Paper covers Rock</p>"
-    advancedGameRules.innerHTML += "<p>Rock crushes Lizard</p>"
-    advancedGameRules.innerHTML += "<p>Lizard poisons Spock</p>"
-    advancedGameRules.innerHTML += "<p>Spock smashes Scissors</p>"
-    advancedGameRules.innerHTML += "<p>Scissors decapitates Lizard</p>"
-    advancedGameRules.innerHTML += "<p>Lizard eats Paper</p>"
-    advancedGameRules.innerHTML += "<p>Paper disproves Spock</p>"
-    advancedGameRules.innerHTML += "<p>Spock vaporizes Rock</p>"
-    advancedGameRules.innerHTML += "<p>(and as it always has) Rock crushes Scissors</p>"
+    advancedGameRules.innerHTML += `<h2>Rock, Paper, Scissors, Lizard, Spock</h2>
+    <p>Rock, Paper, Scissors, Lizard, Spock is a game of chance that expands. It is first used to settle a dispute about what to watch on TV between Sheldon and Raj in 'The Lizard-Spock Expansion'.</p>
+    <h3>Rules:</h3>
+    <p>The game is an expansion on the game Rock, Paper, Scissors. Each player picks a variable and reveals it at the same time. The winner is the one who defeats the others. In a tie, the process is repeated until a winner is found.</p>
+    <p>Almost always, the boys will all pick Spock at the same time and tie over and over again.</p>
+    <p>Scissors cuts Paper</p>
+    <p>Paper covers Rock</p>
+    <p>Rock crushes Lizard</p>
+    <p>Lizard poisons Spock</p>
+    <p>Spock smashes Scissors</p>
+    <p>Scissors decapitates Lizard</p>
+    <p>Lizard eats Paper</p>
+    <p>Paper disproves Spock</p>
+    <p>Spock vaporizes Rock</p>
+    <p>(and as it always has) Rock crushes Scissors</p>`
 }
 
+/**
+ * Simple function to clear content for the rules not to stack
+ */
 function clearContent() {
     document.getElementById('rule').innerHTML = "";
+}
+
+function actualStandardGame() {
+    let userSelection = document.getElementById
+}
+
+/**
+ * Function that autogenerates oponent's move
+ */
+function oponentSign() {
+    let oponentSelection = Math.floor(Math.random() * 3);
+    
+    if (oponentSelection == 0) {
+        let oponentHand = 'rock';
+        console.log(`oponent chose ${oponentHand}`);
+    } else if (oponentSelection == 1) {
+        let oponentHand = 'paper';
+        console.log(`oponent chose ${oponentHand}`);
+    }
+    else {
+        let oponentHand = 'scissors';
+        console.log(`oponent chose ${oponentHand}`);
+    }
 }

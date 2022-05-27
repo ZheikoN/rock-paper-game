@@ -19,6 +19,9 @@ main {
     width: 100%;
     background-color: whitesmoke;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 footer {
@@ -43,4 +46,5 @@ h2, h3, p {
 .rules {
     width: 20%;
     flex: 0 0 20%;
+    border: 0px red solid;
 }
