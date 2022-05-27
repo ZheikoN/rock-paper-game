@@ -9,20 +9,20 @@ html, body {
 }
 
 header{
-    height: 10%;
+    height: 5%;
     width: 100%;
     background-color: darkgray;
 }
 
 main {
-    height: 80%;
+    height: 90%;
     width: 100%;
     background-color: whitesmoke;
     position: relative;
 }
 
 footer {
-    height: 10%;
+    height: 5%;
     width: 100%;
     background-color: darkgray;
 }

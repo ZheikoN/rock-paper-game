@@ -16,9 +16,16 @@
     <main>
         <div class="game-area">
             <p>actual game area</p>
+            <input type="radio" id="standard-game" name="game" value="rock-paper-scissors">
+            <label for="game-type">Rock Paper Scissors</label>
+            <br>
+            <input type="radio" id="advanced-game" name="game" value="rock-paper-scissors-lizard-spock">
+            <label for="game-type">Rock, Paper, Scissors, Lizard, Spock</label>
+            <br>
+            <button onclick="gameSelect()" id="btn-game">Select Game!</button>
         </div>
         <div class="rules">
-            <p>rules of the game</p>
+            <p id="rule">rules of the game</p>
         </div>
     </main>
     <footer>
