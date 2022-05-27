@@ -28,7 +28,7 @@ const index = {
       spock:'win',
     },
     spock: {
-      rock: 'loose',
+      rock: 'win',
       paper: 'loose',
       scissors: 'win',
       lizard:'loose',
@@ -47,32 +47,77 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             let playerHand = this.getAttribute("data-type");
             let oponentHand = oponentSign();
-            console.log(`Player selected ${playerHand}`);
-            console.log(`oponent selected ${oponentHand}`);
             let finalResult = index[playerHand][oponentHand];
-            console.log(`Player ${finalResult} this game.`);
-
-            if (finalResult == 'win') {
-                ++scorePlayer;
-            } else if (finalResult == 'loose') {
-                ++scoreOponent;
-            } else {
-                ++scoreDraw;
-            }
-
-            document.getElementById('result').innerText = `You ${finalResult} the game`
-            document.getElementById('win').innerText = `Win: ${scorePlayer}`;
-            document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
-            document.getElementById('loss').innerText = `Loss: ${scoreOponent}`;
-
-
+            displayPlayerHand(playerHand);
+            displayOponentHand(oponentHand)
+            displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw);
+            calculateScore(finalResult);
+            
         })
-
-
 
     }
 })
+/**
+ * Function is adding +1 on wins, draws and losses
+ * @param {*} finalResult 
+ */
+function calculateScore(finalResult) {
+    if (finalResult == 'win') {
+        ++scorePlayer;
+    } else if (finalResult == 'loose') {
+        ++scoreOponent;
+    } else {
+        ++scoreDraw;
+    }
+}
 
+/**
+ * Function is displaying results of calculateScore and shows a scoreboard
+ */
+function displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw) {
+            document.getElementById('result').innerText = `You ${finalResult} the game`;
+            document.getElementById('win').innerText = `Win: ${scorePlayer}`;
+            document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
+            document.getElementById('loss').innerText = `Loss: ${scoreOponent}`;
+    
+}
+
+/**
+ * Function replaces written string result for a HTML code that shows picture for player's turn
+ */
+function displayPlayerHand(playerHand) {
+    let record = [];
+    let playerHandImage;
+    if (playerHand == 'rock') {
+        playerHandImage = '<i class="fa-solid fa-hand-back-fist"></i>';
+        }
+        else if (playerHand == 'paper') {
+            playerHandImage = '<i class="fa-solid fa-hand"></i>';
+        } else {
+            playerHandImage = '<i class="fa-solid fa-hand-scissors"></i>';
+        };
+  
+        document.getElementById('player-select').innerHTML += `You played ${playerHandImage}<br>`;
+}
+
+
+/**
+ * Function replaces written string result for a HTML code that shows picture for oponent's turn
+ */
+function displayOponentHand(oponentHand) {
+
+    let oponentHandImage;
+    if (oponentHand == 'rock') {
+        oponentHandImage = '<i class="fa-solid fa-hand-back-fist"></i>';
+        }
+        else if (oponentHand == 'paper') {
+            oponentHandImage = '<i class="fa-solid fa-hand"></i>';
+        } else {
+            oponentHandImage = '<i class="fa-solid fa-hand-scissors"></i>';
+        }
+                    
+        document.getElementById('oponent-select').innerHTML += `Oponent played ${oponentHandImage}<br>`;
+}
 
 
 /**

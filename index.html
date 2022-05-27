@@ -20,13 +20,20 @@
     <main>
 
         <div class="game-area">
-            <p>actual game area</p>
+            
             <div class="select-game">
-                <input type="radio" id="standard-game" name="game" value="rock-paper-scissors">
-                <label for="game-type">Rock Paper Scissors</label>
+                <h2>Select your game</h2>
+                <label class="custom-radio-btn">
+                <span class="label">rock, paper, scissors</span>
+                <input type="radio" id="standard-game" name="game" value="rock-paper-scissors" checked>
+                <span class="checkmark"></span>
+                </label>
                 <br>
+                <label class="custom-radio-btn">
+                <span class="label">rock, paper, scissors, lizard, spock</span>
                 <input type="radio" id="advanced-game" name="game" value="rock-paper-scissors-lizard-spock">
-                <label for="game-type">Rock, Paper, Scissors, Lizard, Spock</label>
+                <span class="checkmark"></span>
+                </label>
                 <br>
                 <button onclick="gameSelect()" id="btn-game">Select Game!</button>
             </div>
@@ -40,6 +47,12 @@
                 <div id="win"> </div>
                 <div id="draw"> </div>
                 <div id="loss"> </div>
+            </div>
+
+            <div class="game-log">
+                <div class="game-log-player" id="player-select">You played: <br></div>
+                
+                <div class="game-log-oponent" id="oponent-select">Oponent played: <br></div>
             </div>
             <div class="messageboard">
                 <h1><span id="result"></span></h1>
