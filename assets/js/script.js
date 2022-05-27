@@ -1,3 +1,41 @@
+const index = {
+    rock: {
+      rock: 'draw',
+      paper: 'loose',
+      scissors: 'win',
+      lizard:'loose',
+      spock:'win',
+    },
+    paper: {
+      rock: 'win',
+      paper: 'draw',
+      scissors: 'loose',
+      lizard:'loose',
+      spock:'win',
+    },
+    scissors: {
+      rock: 'loose',
+      paper: 'win',
+      scissors: 'draw',
+      lizard:'win',
+      spock:'loose',
+    },
+    lizard: {
+      rock: 'loose',
+      paper: 'win',
+      scissors: 'loose',
+      lizard:'draw',
+      spock:'win',
+    },
+    spock: {
+      rock: 'loose',
+      paper: 'loose',
+      scissors: 'win',
+      lizard:'loose',
+      spock:'draw',
+    },
+  }
+
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
 
@@ -6,13 +44,16 @@ document.addEventListener("DOMContentLoaded", function () {
             let playerHand = this.getAttribute("data-type");
             let oponentHand = oponentSign();
             let result = compareHands(playerHand, oponentHand);
-            console.log(result);
+            console.log(`Player selected ${playerHand}`);
+            let finalResult = index[playerHand][oponentHand];
+            console.log(`Player ${finalResult} this game.`);
         })
 
 
 
     }
 })
+
 
 
 /**
@@ -94,15 +135,12 @@ function oponentSign() {
     let oponentHand;
     if (oponentSelection == 0) {
         oponentHand = 'rock';
-
     } else if (oponentSelection == 1) {
         oponentHand = 'paper';
-
     } else {
         oponentHand = 'scissors';
-
     }
-    console.log(oponentHand);
+    console.log(`oponent selected ${oponentHand}`);
     return oponentHand;
 }
 
