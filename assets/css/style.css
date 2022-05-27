@@ -31,6 +31,10 @@ h1 {
     text-align: center;
 }
 
+h2, h3, p {
+    margin-bottom: 5px;
+}
+
 .game-area {
     width: 80%;
     flex: 0 0 80%;
