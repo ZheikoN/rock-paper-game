@@ -1,16 +1,16 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
 
     for (let button of buttons) {
         button.addEventListener("click", function () {
-            let hand = this.getAttribute("data-type");
-            console.log(hand);
-            oponentSign(); 
+            let playerHand = this.getAttribute("data-type");
+            let oponentHand = oponentSign();
+            let result = compareHands(playerHand, oponentHand);
+            console.log(result);
         })
 
-        
-    
+
+
     }
 })
 
@@ -87,19 +87,30 @@ function actualStandardGame() {
 
 /**
  * Function that autogenerates oponent's move
+ * @returns oponentHand
  */
 function oponentSign() {
     let oponentSelection = Math.floor(Math.random() * 3);
-    
+    let oponentHand;
     if (oponentSelection == 0) {
-        let oponentHand = 'rock';
-        console.log(`oponent chose ${oponentHand}`);
+        oponentHand = 'rock';
+
     } else if (oponentSelection == 1) {
-        let oponentHand = 'paper';
-        console.log(`oponent chose ${oponentHand}`);
+        oponentHand = 'paper';
+
+    } else {
+        oponentHand = 'scissors';
+
     }
-    else {
-        let oponentHand = 'scissors';
-        console.log(`oponent chose ${oponentHand}`);
-    }
+    console.log(oponentHand);
+    return oponentHand;
+}
+
+function compareHands(playerHand, oponentHand) {
+    let result = `win or lose`;
+
+    if (playerHand === oponentHand) {
+        result = 'draw';
+    } 
+    return result;
 }
