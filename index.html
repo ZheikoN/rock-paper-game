@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/f2152f49c9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
     <title>Best Rock Paper Game</title>
 </head>
 
@@ -29,9 +31,18 @@
                 <button onclick="gameSelect()" id="btn-game">Select Game!</button>
             </div>
             <div class="actual-standard-game">
-                <button data-type="rock">Rock</button>
-                <button data-type="paper">paper</button>
-                <button data-type="scissors">scissors</button>
+                <button data-type="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
+                <button data-type="paper"><i class="fa-solid fa-hand"></i></button>
+                <button data-type="scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+            </div>
+
+            <div class="scoreboard">
+                <div id="win"> </div>
+                <div id="draw"> </div>
+                <div id="loss"> </div>
+            </div>
+            <div class="messageboard">
+                <h1><span id="result"></span></h1>
             </div>
         </div>
         <div class="rules">

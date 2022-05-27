@@ -48,3 +48,31 @@ h2, h3, p {
     flex: 0 0 20%;
     border: 0px red solid;
 }
+
+.actual-standard-game button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    transition: 50ms;
+    text-align: center;
+}
+
+.actual-standard-game button:hover {
+    transform: scale(1.2);
+}
+
+.scoreboard {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.scoreboard div {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.messageboard {
+    width: 100%;
+    text-align: center;
+}

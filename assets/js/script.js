@@ -35,6 +35,10 @@ const index = {
       spock:'draw',
     },
   }
+let scorePlayer = 0;
+let scoreOponent = 0;
+let scoreDraw = 0;
+
 
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
@@ -43,10 +47,25 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             let playerHand = this.getAttribute("data-type");
             let oponentHand = oponentSign();
-            let result = compareHands(playerHand, oponentHand);
             console.log(`Player selected ${playerHand}`);
+            console.log(`oponent selected ${oponentHand}`);
             let finalResult = index[playerHand][oponentHand];
             console.log(`Player ${finalResult} this game.`);
+
+            if (finalResult == 'win') {
+                ++scorePlayer;
+            } else if (finalResult == 'loose') {
+                ++scoreOponent;
+            } else {
+                ++scoreDraw;
+            }
+
+            document.getElementById('result').innerText = `You ${finalResult} the game`
+            document.getElementById('win').innerText = `Win: ${scorePlayer}`;
+            document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
+            document.getElementById('loss').innerText = `Loss: ${scoreOponent}`;
+
+
         })
 
 
@@ -140,15 +159,6 @@ function oponentSign() {
     } else {
         oponentHand = 'scissors';
     }
-    console.log(`oponent selected ${oponentHand}`);
     return oponentHand;
 }
 
-function compareHands(playerHand, oponentHand) {
-    let result = `win or lose`;
-
-    if (playerHand === oponentHand) {
-        result = 'draw';
-    } 
-    return result;
-}
