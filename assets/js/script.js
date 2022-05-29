@@ -39,14 +39,17 @@ let scorePlayer = 0;
 let scoreOponent = 0;
 let scoreDraw = 0;
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    let buttons = document.getElementsByTagName("button");
+    let gameSelected = document.getElementById("btn-game");
+    let buttons = document.getElementsByClassName("btn-play");
+
+    gameSelected.addEventListener("click", gameSelect);
 
     for (let button of buttons) {
         button.addEventListener("click", function () {
-            let playerHand = this.getAttribute("data-type");
-            let oponentHand = oponentSign();
+            let playerHand = this.getAttribute("data-type"); 
+            let oponentHand = gameSelect();
+            console.log(oponentHand);
             let finalResult = index[playerHand][oponentHand];
             displayPlayerHand(playerHand);
             displayOponentHand(oponentHand)
@@ -90,12 +93,15 @@ function displayPlayerHand(playerHand) {
     let playerHandImage;
     if (playerHand == 'rock') {
         playerHandImage = '<i class="fa-solid fa-hand-back-fist"></i>';
-        }
-        else if (playerHand == 'paper') {
+        }else if (playerHand == 'paper') {
             playerHandImage = '<i class="fa-solid fa-hand"></i>';
-        } else {
+        }else if (playerHand == 'scissors') {
             playerHandImage = '<i class="fa-solid fa-hand-scissors"></i>';
-        };
+        }else if (playerHand == 'lizard') {
+            playerHandImage = '<i class="fa-solid fa-hand-lizard"></i>';
+        } else {
+            playerHandImage = '<i class="fa-solid fa-hand-spock"></i>';
+        }
   
         document.getElementById('player-select').innerHTML += `You played ${playerHandImage}<br>`;
 }
@@ -109,11 +115,14 @@ function displayOponentHand(oponentHand) {
     let oponentHandImage;
     if (oponentHand == 'rock') {
         oponentHandImage = '<i class="fa-solid fa-hand-back-fist"></i>';
-        }
-        else if (oponentHand == 'paper') {
+        }else if (oponentHand == 'paper') {
             oponentHandImage = '<i class="fa-solid fa-hand"></i>';
-        } else {
+        }else if (oponentHand == 'scissors') {
             oponentHandImage = '<i class="fa-solid fa-hand-scissors"></i>';
+        }else if (oponentHand == 'lizard') {
+            oponentHandImage = '<i class="fa-solid fa-hand-lizard"></i>';
+        } else {
+            oponentHandImage = '<i class="fa-solid fa-hand-spock"></i>';
         }
                     
         document.getElementById('oponent-select').innerHTML += `Oponent played ${oponentHandImage}<br>`;
@@ -125,19 +134,25 @@ function displayOponentHand(oponentHand) {
  */
 
 function gameSelect() {
-
     let standardGame = document.getElementById('standard-game');
     let advancedGame = document.getElementById('advanced-game');
+    let dificulty = 0;
 
     if (standardGame.checked == true) {
         clearContent();
         standardGameRules();
+        dificulty = oponentSign();
     } else if (advancedGame.checked == true) {
         clearContent();
         advancedGameRules();
+        dificulty = oponentSignAdvanced();
     } else {
+        dificulty = 0;
         alert(`nothing was selected`);
+        throw 'nothing was selected, aborting!';
     }
+    
+return dificulty;
 
 }
 
@@ -195,6 +210,8 @@ function actualStandardGame() {
  * @returns oponentHand
  */
 function oponentSign() {
+    document.getElementById('lizard').style.display="none";
+    document.getElementById('spock').style.display="none";
     let oponentSelection = Math.floor(Math.random() * 3);
     let oponentHand;
     if (oponentSelection == 0) {
@@ -207,3 +224,21 @@ function oponentSign() {
     return oponentHand;
 }
 
+function oponentSignAdvanced() {
+    document.getElementById('lizard').style.display="block";
+    document.getElementById('spock').style.display="block";
+    let oponentSelection = Math.floor(Math.random() * 5);
+    let oponentHand;
+    if (oponentSelection == 0) {
+        oponentHand = 'rock';
+    } else if (oponentSelection == 1) {
+        oponentHand = 'paper';
+    }else if (oponentSelection == 2) {
+        oponentHand = 'scissors';
+    }else if (oponentSelection == 3) {
+        oponentHand = 'lizard';
+    } else {
+        oponentHand = 'spock';
+    }
+    return oponentHand;
+}
