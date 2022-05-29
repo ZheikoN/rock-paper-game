@@ -36,13 +36,18 @@
                 </label>
                 <br>
                 <button id="btn-game">Select Game!</button>
+                <div class="messageboard">
+                    <h1><span id="result"></span></h1>
+                </div>
+                <button id="clearHistory">clear history</button>
             </div>
-            <div class="actual-standard-game">
-                <button class="btn-play" data-type="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
-                <button class="btn-play" data-type="paper"><i class="fa-solid fa-hand"></i></button>
-                <button class="btn-play" data-type="scissors"><i class="fa-solid fa-hand-scissors"></i></button>
-                <button class="btn-play" data-type="lizard" id="lizard"><i class="fa-solid fa-hand-lizard"></i></button>
-                <button class="btn-play" data-type="spock" id="spock"><i class="fa-solid fa-hand-spock"></i></button>
+
+            <div class="actual-standard-game" id="game-container" style="display: none;">
+                <button class="btn-play" data-type="rock"><img src="assets/images/rock.jpg" alt="rock"></button>
+                <button class="btn-play" data-type="paper"><img src="assets/images/paper.jpg" alt="paper"></button>
+                <button class="btn-play" data-type="scissors"><img src="assets/images/scissors.png" alt="scissors"></button>
+                <button class="btn-play" data-type="lizard" id="lizard"><img src="assets/images/lizard.png" alt="lizard"></button>
+                <button class="btn-play" data-type="spock" id="spock"><img src="assets/images/spock.jpg" alt="spock"></button>
             </div>
 
             <div class="scoreboard">
@@ -52,13 +57,11 @@
             </div>
 
             <div class="game-log">
-                <div class="game-log-player" id="player-select">You played: <br></div>
+                <div class="game-log-player" id="player-select"></div>
                 
-                <div class="game-log-oponent" id="oponent-select">Oponent played: <br></div>
+                <div class="game-log-oponent" id="oponent-select"></div>
             </div>
-            <div class="messageboard">
-                <h1><span id="result"></span></h1>
-            </div>
+
         </div>
         <div class="rules">
             <p id="rule">rules of the game</p>
