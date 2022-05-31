@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@200&family=Roboto:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +8,19 @@
 html, body {
     background-color: aqua;
     height: 100%;
-    font-family: "Raleway", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 header{
     height: 5%;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(63, 172, 167);
 }
 
 main {
     height: 90%;
     width: 100%;
-    background-color: rgb(147, 139, 242);
+    background-color: rgb(255, 255, 255);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -28,7 +30,7 @@ main {
 footer {
     height: 5%;
     width: 100%;
-    background-color: darkgray;
+    background-color: rgb(63, 172, 167);;
 }
 
 h1 {
@@ -47,14 +49,18 @@ h2, h3, p {
 .rules {
     width: 20%;
     flex: 0 0 20%;
-    border: 0px red solid;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 25px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.25em;
 }
 
-.actual-standard-game {
-    border: 1px blue solid;
+.actual-game {
     text-align: center;
     display: flex;
     justify-content: space-evenly;
+    height: 250px;
 }
 
 .btn-play {
@@ -65,19 +71,27 @@ h2, h3, p {
     text-align: center;
     font-size: large;
     background-color: transparent;
+    transition: 250ms;
 }
+
 .btn-play img {
     width: 100%;
 }
 
-.actual-standard-game button:hover {
+.actual-game button:hover {
     transform: scale(1.2);
+}
+
+.actual-game button:active {
+    transform: scale(1);
 }
 
 .scoreboard {
     position: relative;
     display: flex;
     width: 100%;
+    font-size: large;
+    text-decoration: underline;
 }
 
 .scoreboard div {
@@ -86,60 +100,121 @@ h2, h3, p {
 }
 
 .messageboard {
+    position: relative;
     width: 100%;
     text-align: center;
+    height: 50px;
+    bottom: 2px;
+    font-family: 'Chewy', Arial, Helvetica, sans-serif;
 }
 
 .select-game {
     width: 100%;
-    height: 20%;
+    height: 10%;
     margin: 0 auto;
-    border: 1px red solid;
     text-align: center;
+    
+}
+
+.results {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    display: grid;
+    transition: 500ms;
+}
+
+.game-current {
+    width: 100%;
+    position: relative;
+
+}
+
+.game-current img {
+    width: 75px;
 }
 
 .game-log {
     width: 100%;
-    display: flex;
     position: relative;
-    border: 2px black solid;
 }
 
 .game-log img {
     width: 50px;
 }
 
-.game-log-player {
-    border: 1px red solid;
-    min-width: 33%;
+.game-log-player-current {
+    width: 33%;
     text-align: center;
+    float: left;
+}
+
+.game-log-oponent-current {
+    width: 33%;
+    text-align: center;
+    float: right;
+}
+
+.game-log-player {
+    width: 33%;
+    text-align: center;
+    float: left;
 }
 
 .game-log-oponent {
-    border: 1px rgb(72, 0, 255) solid;
-    min-width: 33%;
+    width: 33%;
     text-align: center;
+    float: right;
+}
+
+.game-log-center {
+    width: 33%;
+    margin: 0 auto;
 }
 
 .reset-game-container {
-    width: 33%;
+    width: 10%;
     margin: 0 auto;
-    border: 1px rgb(212, 255, 0) solid;
-    text-align: center;
-    
+    text-align: center;    
 }
 
 .reset-game-container button {
-    background-color: red;
-    text-transform: uppercase;
-    transition: 500ms;
     border: none;
-    bottom: 1px;
-
+    border-radius: 5px;
+    width: 100px;
+    height: 25px;
+    border: 1px orange solid;
+    box-shadow: 0px 0px 10px rgb(0, 3, 3);
+    margin-bottom: 25px;
+    font-family: 'Chewy', Arial, Helvetica, sans-serif;
 }
 
 .reset-game-container button:hover {
-    background-color: rgb(255, 106, 0);
-    text-transform: uppercase;
-    
+    background-color: rgb(25, 69, 66);
+    color: white;
 }
+
+.reset-game-container button:active {
+    background-color: rgb(25, 69, 66);
+    transform: translateY(4px);
+  }
+
+.game-btn {
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(63, 172, 167);
+    font-family: 'Chewy', Arial, Helvetica, sans-serif;
+    box-shadow: 0px 0px 10px rgb(0, 3, 3);
+}
+
+.game-btn:hover {
+    background-color: rgb(25, 69, 66);
+    color: white;
+}
+
+.game-btn:active {
+    background-color: rgb(25, 69, 66);
+    transform: translateY(4px);
+  }

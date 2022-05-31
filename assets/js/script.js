@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const playerHand = this.getAttribute("data-type");
             const oponentHand = oponentSignAdvanced(isRockPaperScissors ? 3 : 5);
             const finalResult = index[playerHand][oponentHand];
-            displayHand(playerHand, playerHistory, "player-select", "You played:<br>");
-            displayHand(oponentHand, oponentHistory, "oponent-select", "Oponent played:<br>");
+            displayHand(playerHand, playerHistory, "player-select", "player-select-current");
+            displayHand(oponentHand, oponentHistory, "oponent-select", "oponent-select-current");
             displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw);
             calculateScore(finalResult);
             dropHistory(playerHistory);
@@ -86,10 +86,12 @@ function clearHistory() {
     document.getElementById('win').innerText = ``;
     document.getElementById('draw').innerText = ``;
     document.getElementById('loss').innerText = ``;
+    document.getElementById('player-select-current').innerText = ``;
+    document.getElementById('oponent-select-current').innerText = ``;
 }
 
 function dropHistory(history) {
-    if (history.length === 10) history.shift();
+    if (history.length === 10) history.pop();
 }
 
 /**
@@ -111,47 +113,48 @@ function calculateScore(finalResult) {
  */
 function displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw) {
     document.getElementById('result').innerText = `${finalResult}`;
-    document.getElementById('win').innerText = `Win: ${scorePlayer}`;
+    document.getElementById('win').innerText = `Your win count: ${scorePlayer}`;
     document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
-    document.getElementById('loss').innerText = `Loss: ${scoreOponent}`;
+    document.getElementById('loss').innerText = `Oponent win count: ${scoreOponent}`;
 
 }
 
 /**
  * Function replaces written string result for a HTML code that shows picture for player's turn
  */
-function displayPlayerHand(playerHand) {
-    const img = `<img src="assets/images/${playerHand}.jpg" alt="${playerHand}"><br>`;
+// function displayPlayerHand(playerHand) {
+//     const img = `<img src="assets/images/${playerHand}.jpg" alt="${playerHand}"><br>`;
     
-    playerHistory.push(img);
-    for (let record of playerHistory) {
-        playerSelect.innerHTML = 'You played:<br>' + playerHistory;
-    };
-}
+//     playerHistory.push(img);
+//     for (let record of playerHistory) {
+//         playerSelect.innerHTML = 'You played:<br>' + playerHistory;
+//     };
+// }
 
 
 /**
  * Function replaces written string result for a HTML code that shows picture for oponent's turn
  */
-function displayOponentHand(oponentHand) {
+// function displayOponentHand(oponentHand) {
 
-    const img = `<img src="assets/images/${oponentHand}.jpg" alt="${oponentHand}"><br>`;
+//     const img = `<img src="assets/images/${oponentHand}.jpg" alt="${oponentHand}"><br>`;
     
-    oponentHistory.push(img);
-    for (let record of oponentHistory) {
-        oponentSelect.innerHTML = 'Oponent played:<br>' + oponentHistory;
-    };
-}
+//     oponentHistory.push(img);
+//     for (let record of oponentHistory) {
+//         oponentSelect.innerHTML = 'Oponent played:<br>' + oponentHistory;
+//     };
+// }
 
 
-function displayHand(hand, history, target, displayString) {
+function displayHand(hand, history, target, currentTarget) {
 
     const img = `<img src="assets/images/${hand}.jpg" alt="${hand}"><br>`;
-    
-    history.push(img);
+    history.unshift(img);
+     
     for (let record of history) {
-        document.getElementById(target).innerHTML = displayString + history;
-    };
+        document.getElementById(currentTarget).innerHTML = `<span style='opacity: 1'>${history[0]}</span><br>`;
+        document.getElementById(target).innerHTML = `<span style='opacity: 0.5'>${history}</span><br>`;   
+    }
 }
 
 
@@ -161,7 +164,7 @@ function launchStandardGame() {
     document.getElementById('lizard').style.display = "none";
     document.getElementById('spock').style.display = "none";
     standardGameRules();
-    oponentSign();
+    oponentSignAdvanced();
 
 }
 

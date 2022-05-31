@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/f2152f49c9.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
     <title>Best Rock Paper Game</title>
 </head>
 
@@ -20,39 +19,52 @@
     <main>
 
         <div class="game-area">
-            
+
             <div class="select-game">
                 <h2>Select your game!</h2>
-                
-                <div class="messageboard">
-                    <h1><span id="result"></span></h1>
-                </div>
-                <button id="standard-game-btn">Standard game</button>
-                <button id="advanced-game-btn">Advanced game</button>
+
+
+                <button class="game-btn" id="standard-game-btn">Standard game</button>
+                <button class="game-btn" id="advanced-game-btn">Advanced game</button>
+
+
+            </div>
+            <div class="reset-game-container"><button id="clearHistory">Reset Game</button></div>
+            <div class="messageboard">
+                <h1><span id="result"></span></h1>
             </div>
 
-            <div class="actual-standard-game" id="game-container" style="display: none;">
+
+
+            <div class="actual-game" id="game-container" style="display: none;">
                 <button class="btn-play" data-type="rock"><img src="assets/images/rock.jpg" alt="rock"></button>
                 <button class="btn-play" data-type="paper"><img src="assets/images/paper.jpg" alt="paper"></button>
-                <button class="btn-play" data-type="scissors"><img src="assets/images/scissors.png" alt="scissors"></button>
-                <button class="btn-play" data-type="lizard" id="lizard"><img src="assets/images/lizard.png" alt="lizard"></button>
-                <button class="btn-play" data-type="spock" id="spock"><img src="assets/images/spock.jpg" alt="spock"></button>
+                <button class="btn-play" data-type="scissors"><img src="assets/images/scissors.png"
+                        alt="scissors"></button>
+                <button class="btn-play" data-type="lizard" id="lizard"><img src="assets/images/lizard.png"
+                        alt="lizard"></button>
+                <button class="btn-play" data-type="spock" id="spock"><img src="assets/images/spock.jpg"
+                        alt="spock"></button>
             </div>
+            <div class="results">
+                <div class="scoreboard">
+                    <div id="win"></div>
+                    <div id="draw"></div>
+                    <div id="loss"></div>
+                </div>
 
-            <div class="scoreboard">
-                <div id="win"> </div>
-                <div id="draw"> </div>
-                <div id="loss"> </div>
+                <div class="game-current">
+                    <div class="game-log-player-current" id="player-select-current"></div>
+                    <div class="game-log-center"></div>
+                    <div class="game-log-oponent-current" id="oponent-select-current"></div>
+                </div>
+
+                <div class="game-log">
+                    <div class="game-log-player" id="player-select"></div>
+                    <div class="game-log-center"></div>
+                    <div class="game-log-oponent" id="oponent-select"></div>
+                </div>
             </div>
-
-            <div class="game-log">
-                <div class="game-log-player" id="player-select"></div>
-                <div class="reset-game-container"><button id="clearHistory">Reset Game</button></div> 
-                <div class="game-log-oponent" id="oponent-select"></div>
-                
-             
-            </div>
-
         </div>
         <div class="rules">
             <p id="rule">rules of the game</p>
