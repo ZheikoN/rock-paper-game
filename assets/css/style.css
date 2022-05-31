@@ -12,13 +12,13 @@ html, body {
 header{
     height: 5%;
     width: 100%;
-    background-color: darkgray;
+    background-color: rgb(255, 255, 255);
 }
 
 main {
     height: 90%;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: rgb(147, 139, 242);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -101,7 +101,8 @@ h2, h3, p {
 .game-log {
     width: 100%;
     display: flex;
-    border: 1px red solid;
+    position: relative;
+    border: 2px black solid;
 }
 
 .game-log img {
@@ -109,13 +110,36 @@ h2, h3, p {
 }
 
 .game-log-player {
-    float: left;
-    min-width: 50%;
+    border: 1px red solid;
+    min-width: 33%;
     text-align: center;
 }
 
 .game-log-oponent {
-    float: right;
-    min-width: 50%;
+    border: 1px rgb(72, 0, 255) solid;
+    min-width: 33%;
     text-align: center;
+}
+
+.reset-game-container {
+    width: 33%;
+    margin: 0 auto;
+    border: 1px rgb(212, 255, 0) solid;
+    text-align: center;
+    
+}
+
+.reset-game-container button {
+    background-color: red;
+    text-transform: uppercase;
+    transition: 500ms;
+    border: none;
+    bottom: 1px;
+
+}
+
+.reset-game-container button:hover {
+    background-color: rgb(255, 106, 0);
+    text-transform: uppercase;
+    
 }
