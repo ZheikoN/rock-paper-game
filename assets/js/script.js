@@ -154,7 +154,6 @@ function displayHand(hand, history, target, currentTarget) {
     for (let record of history) {
         document.getElementById(currentTarget).innerHTML = `<span style='opacity: 1'>${history[0]}</span><br>`;
         document.getElementById(target).innerHTML = `<span style='opacity: 0.5'>${history}</span><br>`;
-        console.log(history);
     }
 }
 
