@@ -47,13 +47,21 @@ h2, h3, p {
 }
 
 .rules {
+    display: none;
+}
+
+.help:hover + .rules {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
     width: 20%;
-    flex: 0 0 20%;
     box-sizing: border-box;
     text-align: center;
     padding: 25px;
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 1.25em;
+    box-shadow: 0 0 10px black;
 }
 
 .actual-game {

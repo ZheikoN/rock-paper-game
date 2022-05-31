@@ -32,7 +32,7 @@ const index = {
         paper: 'Paper disproves Spock, you lose!',
         scissors: 'Spock smashes Scissors, you win!',
         lizard: 'Lizard poisons Spock, you lose!',
-        spock: 'Spock + spock? I guess thats a draw then!',
+        spock: 'Spock + Spock? I guess thats a draw then!',
     },
 }
 const rule = document.getElementById('rule');
@@ -153,7 +153,8 @@ function displayHand(hand, history, target, currentTarget) {
      
     for (let record of history) {
         document.getElementById(currentTarget).innerHTML = `<span style='opacity: 1'>${history[0]}</span><br>`;
-        document.getElementById(target).innerHTML = `<span style='opacity: 0.5'>${history}</span><br>`;   
+        document.getElementById(target).innerHTML = `<span style='opacity: 0.5'>${history}</span><br>`;
+        console.log(history);
     }
 }
 
@@ -175,8 +176,6 @@ function launchAdvancedGame() {
     document.getElementById('spock').style.display = "block";
     advancedGameRules();
     oponentSignAdvanced();
-
-
 }
 
 /**
