@@ -26,20 +26,25 @@
                 <label class="custom-radio-btn">
                 <span class="label">rock, paper, scissors</span>
                 <input type="radio" id="standard-game" name="game" value="rock-paper-scissors" checked>
+                
                 <span class="checkmark"></span>
                 </label>
                 <br>
                 <label class="custom-radio-btn">
                 <span class="label">rock, paper, scissors, lizard, spock</span>
                 <input type="radio" id="advanced-game" name="game" value="rock-paper-scissors-lizard-spock">
+                
                 <span class="checkmark"></span>
                 </label>
                 <br>
-                <button id="btn-game">Select Game!</button>
+                <button id="btn-game" onclick="clearHistory()">Select Game!</button>
                 <div class="messageboard">
                     <h1><span id="result"></span></h1>
                 </div>
                 <button id="clearHistory">clear history</button>
+
+                <button id="standard-game-btn">standard game</button>
+                <button id="advanced-game-btn">advanced game</button>
             </div>
 
             <div class="actual-standard-game" id="game-container" style="display: none;">

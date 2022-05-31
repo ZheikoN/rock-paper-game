@@ -104,6 +104,10 @@ h2, h3, p {
     border: 1px red solid;
 }
 
+.game-log img {
+    width: 50px;
+}
+
 .game-log-player {
     float: left;
     min-width: 50%;

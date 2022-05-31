@@ -1,89 +1,97 @@
 const index = {
     rock: {
-      rock: 'Rock ties rock, its a draw!',
-      paper: 'Paper covers Rock, you lose!',
-      scissors: 'Rock crushes Scissors, you win!',
-      lizard:'Rock crushes Lizard, you win!',
-      spock:'Spock vaporizes Rock, you lose!',
+        rock: 'Rock ties rock, its a draw!',
+        paper: 'Paper covers Rock, you lose!',
+        scissors: 'Rock crushes Scissors, you win!',
+        lizard: 'Rock crushes Lizard, you win!',
+        spock: 'Spock vaporizes Rock, you lose!',
     },
     paper: {
-      rock: 'Paper covers Rock, you win!',
-      paper: 'Paper ties paper, its a draw!',
-      scissors: 'Scissors cuts Paper, you lose!',
-      lizard:'Lizard eats Paper, you lose!',
-      spock:'Paper disproves Spock, you win!',
+        rock: 'Paper covers Rock, you win!',
+        paper: 'Paper ties paper, its a draw!',
+        scissors: 'Scissors cuts Paper, you lose!',
+        lizard: 'Lizard eats Paper, you lose!',
+        spock: 'Paper disproves Spock, you win!',
     },
     scissors: {
-      rock: 'Rock crushes Scissors, you lose!',
-      paper: 'Scissors cuts Paper, you win!',
-      scissors: 'Scissors tie scissors, its a draw!',
-      lizard:'Scissors decapitates Lizard, you win!',
-      spock:'Spock smashes Scissors, you lose!',
+        rock: 'Rock crushes Scissors, you lose!',
+        paper: 'Scissors cuts Paper, you win!',
+        scissors: 'Scissors tie scissors, its a draw!',
+        lizard: 'Scissors decapitates Lizard, you win!',
+        spock: 'Spock smashes Scissors, you lose!',
     },
     lizard: {
-      rock: 'Rock crushes Lizard, you lose!',
-      paper: 'Lizard eats Paper, you win!',
-      scissors: 'Scissors decapitates Lizard, you lose!',
-      lizard:'Lizard mates lizard, you got lizard offspring now. Its a draw!',
-      spock:'Lizard poisons Spock, you win!',
+        rock: 'Rock crushes Lizard, you lose!',
+        paper: 'Lizard eats Paper, you win!',
+        scissors: 'Scissors decapitates Lizard, you lose!',
+        lizard: 'Lizard mates lizard, you got lizard offspring now. Its a draw!',
+        spock: 'Lizard poisons Spock, you win!',
     },
     spock: {
-      rock: 'Spock vaporizes Rock, you win!',
-      paper: 'Paper disproves Spock, you lose!',
-      scissors: 'Spock smashes Scissors, you win!',
-      lizard:'Lizard poisons Spock, you lose!',
-      spock:'Spock + spock? I guess thats a draw then!',
+        rock: 'Spock vaporizes Rock, you win!',
+        paper: 'Paper disproves Spock, you lose!',
+        scissors: 'Spock smashes Scissors, you win!',
+        lizard: 'Lizard poisons Spock, you lose!',
+        spock: 'Spock + spock? I guess thats a draw then!',
     },
-  }
+}
+const rule = document.getElementById('rule');
+const playerSelect = document.getElementById('player-select');
+const oponentSelect = document.getElementById('oponent-select');
 let scorePlayer = 0;
 let scoreOponent = 0;
 let scoreDraw = 0;
 let playerHistory = [];
 let oponentHistory = [];
-let gameSelected = document.getElementById("btn-game");
-gameSelected.addEventListener("click", gameSelect);
+let isRockPaperScissors = true;
+
+
+document.getElementById('standard-game-btn').addEventListener("click", function () {
+    isRockPaperScissors = true;
+    launchStandardGame();
+});
+
+document.getElementById('advanced-game-btn').addEventListener("click", function () {
+    isRockPaperScissors = false;
+    launchAdvancedGame();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
-    let gameSelected = document.getElementById("btn-game");
-    gameSelected.addEventListener("click", gameSelect);
     document.getElementById('clearHistory').addEventListener("click", clearHistory);
-
-    let buttons = document.getElementsByClassName("btn-play");
+    const buttons = document.getElementsByClassName("btn-play");
     for (let button of buttons) {
         button.addEventListener("click", function () {
-            let playerHand = this.getAttribute("data-type"); 
-            let oponentHand = gameSelect();
-            let finalResult = index[playerHand][oponentHand];
-            displayPlayerHand(playerHand);
-            displayOponentHand(oponentHand)
+            const playerHand = this.getAttribute("data-type");
+            const oponentHand = oponentSignAdvanced(isRockPaperScissors ? 3 : 5);
+            const finalResult = index[playerHand][oponentHand];
+            displayHand(playerHand, playerHistory, "player-select", "You played:<br>");
+            displayHand(oponentHand, oponentHistory, "oponent-select", "Oponent played:<br>");
             displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw);
             calculateScore(finalResult);
-            dropPlayerHistory();
-            dropOponentHistory();
+            dropHistory(playerHistory);
+            dropHistory(oponentHistory);
         })
-
     }
 })
 
 function clearHistory() {
     playerHistory = [];
     oponentHistory = [];
-    document.getElementById('player-select').innerHTML = '';
-    document.getElementById('oponent-select').innerHTML = '';
-
+    scorePlayer = 0;
+    scoreOponent = 0;
+    scoreDraw = 0;
+    rule.innerHTML = '';
+    playerSelect.innerHTML = '';
+    oponentSelect.innerHTML = '';
+    document.getElementById('win').innerText = ``;
+    document.getElementById('draw').innerText = ``;
+    document.getElementById('loss').innerText = ``;
 }
 
-function dropPlayerHistory() {
-    if (playerHistory.length == 10) {
-        playerHistory.shift();
-    }
+function dropHistory(history) {
+    if (history.length === 10) history.shift();
 }
 
-function dropOponentHistory() {
-    if (oponentHistory.length == 10) {
-        oponentHistory.shift();
-    }
-}
 /**
  * Function is adding +1 on wins, draws and losses
  * @param {*} finalResult 
@@ -102,34 +110,23 @@ function calculateScore(finalResult) {
  * Function is displaying results of calculateScore and shows a scoreboard
  */
 function displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw) {
-            document.getElementById('result').innerText = `${finalResult}`;
-            document.getElementById('win').innerText = `Win: ${scorePlayer}`;
-            document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
-            document.getElementById('loss').innerText = `Loss: ${scoreOponent}`;
-    
+    document.getElementById('result').innerText = `${finalResult}`;
+    document.getElementById('win').innerText = `Win: ${scorePlayer}`;
+    document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
+    document.getElementById('loss').innerText = `Loss: ${scoreOponent}`;
+
 }
 
 /**
  * Function replaces written string result for a HTML code that shows picture for player's turn
  */
 function displayPlayerHand(playerHand) {
-    let playerHandImage;
-    if (playerHand == 'rock') {
-        playerHandImage = '<i class="fa-solid fa-hand-back-fist"></i><br>';
-        }else if (playerHand == 'paper') {
-            playerHandImage = '<i class="fa-solid fa-hand"></i><br>';
-        }else if (playerHand == 'scissors') {
-            playerHandImage = '<i class="fa-solid fa-hand-scissors"></i><br>';
-        }else if (playerHand == 'lizard') {
-            playerHandImage = '<i class="fa-solid fa-hand-lizard"></i><br>';
-        } else {
-            playerHandImage = '<i class="fa-solid fa-hand-spock"></i><br>';
-        }
-        playerHistory.push(playerHandImage);
-        for (let record of playerHistory) {
-        document.getElementById('player-select').innerHTML = 'You played:<br>' + playerHistory;
-        };
-
+    const img = `<img src="assets/images/${playerHand}.jpg" alt="${playerHand}"><br>`;
+    
+    playerHistory.push(img);
+    for (let record of playerHistory) {
+        playerSelect.innerHTML = 'You played:<br>' + playerHistory;
+    };
 }
 
 
@@ -138,62 +135,52 @@ function displayPlayerHand(playerHand) {
  */
 function displayOponentHand(oponentHand) {
 
-    let oponentHandImage;
-    if (oponentHand == 'rock') {
-        oponentHandImage = '<i class="fa-solid fa-hand-back-fist"></i><br>';
-        }else if (oponentHand == 'paper') {
-            oponentHandImage = '<i class="fa-solid fa-hand"></i><br>';
-        }else if (oponentHand == 'scissors') {
-            oponentHandImage = '<i class="fa-solid fa-hand-scissors"></i><br>';
-        }else if (oponentHand == 'lizard') {
-            oponentHandImage = '<i class="fa-solid fa-hand-lizard"></i><br>';
-        } else {
-            oponentHandImage = '<i class="fa-solid fa-hand-spock"></i><br>';
-        }
-                    
-        oponentHistory.push(oponentHandImage);
-        for (let record of oponentHistory) {
-        document.getElementById('oponent-select').innerHTML = 'Oponent played:<br>' + oponentHistory;
-        };
+    const img = `<img src="assets/images/${oponentHand}.jpg" alt="${oponentHand}"><br>`;
+    
+    oponentHistory.push(img);
+    for (let record of oponentHistory) {
+        oponentSelect.innerHTML = 'Oponent played:<br>' + oponentHistory;
+    };
 }
 
 
-/**
- * This functions is selecting Game to be played along with Rules to display next to the game area
- */
+function displayHand(hand, history, target, displayString) {
 
-function gameSelect() {
+    const img = `<img src="assets/images/${hand}.jpg" alt="${hand}"><br>`;
     
-    document.getElementById('game-container').style.display="flex"
-    let standardGame = document.getElementById('standard-game');
-    let advancedGame = document.getElementById('advanced-game');
-    let dificulty = 0;
+    history.push(img);
+    for (let record of history) {
+        document.getElementById(target).innerHTML = displayString + history;
+    };
+}
 
-    if (standardGame.checked == true) {
-        clearContent();
-        standardGameRules();
-        dificulty = oponentSign();
-       
-    } else if (advancedGame.checked == true) {
-        clearContent();
-        advancedGameRules();
-        dificulty = oponentSignAdvanced();
-        
-    } else {
-        dificulty = 0;
-        alert(`nothing was selected`);
-        throw 'nothing was selected, aborting!';
-    }
-return dificulty;
+
+function launchStandardGame() {
+    clearHistory();
+    document.getElementById('game-container').style.display = "flex"
+    document.getElementById('lizard').style.display = "none";
+    document.getElementById('spock').style.display = "none";
+    standardGameRules();
+    oponentSign();
+
+}
+
+function launchAdvancedGame() {
+    clearHistory();
+    document.getElementById('game-container').style.display = "flex"
+    document.getElementById('lizard').style.display = "block";
+    document.getElementById('spock').style.display = "block";
+    advancedGameRules();
+    oponentSignAdvanced();
+
+
 }
 
 /**
  * This function explains rules of Standard Game
  */
 function standardGameRules() {
-    let standardGameRules = document.getElementById('rule');
-
-    standardGameRules.innerHTML += `<h2>Rock Paper Scissors Rules</h2>
+    rule.innerHTML += `<h2>Rock Paper Scissors Rules</h2>
     <p>Rock Paper Scissors is a zero sum game that is usually played by two people using their hands and no tools. The idea is to make shapes with an outstretched hand where each shape will have a certain degree of power and will lead to an outcome.</p>
     <br>
     <p>Although the game has a lot of complexity to it, the rules to play it are pretty simple.The game is played where players deliver hand signals that will represent the elements of the game; rock, paper and scissors.</p>
@@ -207,8 +194,7 @@ function standardGameRules() {
  * This function explains rules of Advanced Game
  */
 function advancedGameRules() {
-    let advancedGameRules = document.getElementById('rule');
-    advancedGameRules.innerHTML += `<h2>Rock, Paper, Scissors, Lizard, Spock</h2>
+    rule.innerHTML += `<h2>Rock, Paper, Scissors, Lizard, Spock</h2>
     <p>Rock, Paper, Scissors, Lizard, Spock is a game of chance that expands. It is first used to settle a dispute about what to watch on TV between Sheldon and Raj in 'The Lizard-Spock Expansion'.</p>
     <h3>Rules:</h3>
     <p>The game is an expansion on the game Rock, Paper, Scissors. Each player picks a variable and reveals it at the same time. The winner is the one who defeats the others. In a tie, the process is repeated until a winner is found.</p>
@@ -225,47 +211,11 @@ function advancedGameRules() {
     <p>(and as it always has) Rock crushes Scissors</p>`
 }
 
-/**
- * Simple function to clear content for the rules not to stack
- */
-function clearContent() {
-    document.getElementById('rule').innerHTML = "";
-}
-
-/**
- * Function that autogenerates oponent's move
- * @returns oponentHand
- */
-function oponentSign() {
-    document.getElementById('lizard').style.display="none";
-    document.getElementById('spock').style.display="none";
-    let oponentSelection = Math.floor(Math.random() * 3);
-    let oponentHand;
-    if (oponentSelection == 0) {
-        oponentHand = 'rock';
-    } else if (oponentSelection == 1) {
-        oponentHand = 'paper';
-    } else {
-        oponentHand = 'scissors';
-    }
-    return oponentHand;
-}
-
-function oponentSignAdvanced() {
-    document.getElementById('lizard').style.display="block";
-    document.getElementById('spock').style.display="block";
-    let oponentSelection = Math.floor(Math.random() * 5);
-    let oponentHand;
-    if (oponentSelection == 0) {
-        oponentHand = 'rock';
-    } else if (oponentSelection == 1) {
-        oponentHand = 'paper';
-    }else if (oponentSelection == 2) {
-        oponentHand = 'scissors';
-    }else if (oponentSelection == 3) {
-        oponentHand = 'lizard';
-    } else {
-        oponentHand = 'spock';
-    }
-    return oponentHand;
+function oponentSignAdvanced(multiplier) {
+    const oponentSelection = Math.floor(Math.random() * multiplier);
+    if (oponentSelection === 0) { return 'rock';}
+    if (oponentSelection === 1) { return 'paper';}
+    if (oponentSelection === 2) { return 'scissors';}
+    if (oponentSelection === 3) { return 'lizard';}
+    return 'spock';
 }
