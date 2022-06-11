@@ -7,7 +7,7 @@
 
 html,
 body {
-    background-color: aqua;
+    background-color: rgb(63, 172, 167);
     height: 100%;
     font-family: "Nunito", sans-serif;
 }
@@ -16,6 +16,9 @@ header {
     height: 5%;
     width: 100%;
     background-color: rgb(63, 172, 167);
+    color: white;
+    font-family: "Nunito", sans-serif;
+    text-shadow: 2px 2px #000000;
 }
 
 main {
@@ -32,6 +35,7 @@ footer {
     height: 5%;
     width: 100%;
     background-color: rgb(63, 172, 167);
+    position: relative;
 }
 
 h1 {
@@ -42,6 +46,24 @@ h2,
 h3,
 p {
     margin-bottom: 5px;
+}
+
+.social {
+    color: white;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.social a {
+    color: white;
+    margin: 5px;
+    font-size: 150%;
+    transition: 0.5s;
+}
+
+.social a:hover {
+    color: rgb(45, 116, 112);
 }
 
 .game-area {
@@ -86,6 +108,9 @@ p {
 .actual-game {
     text-align: center;
     justify-content: space-evenly;
+    padding-bottom: 20px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .btn-play {
@@ -197,6 +222,7 @@ p {
 
 .reset-game-container {
     width: 100%;
+    height: 40px;
     position: relative;
     text-align: center;
 }
@@ -256,5 +282,17 @@ p {
         height: 150px;
     }
 
-}
+    h2 {
+        margin-bottom: 0;
+    }
 
+    .help:hover+.rules {
+        font-size: small;
+    }
+}
+@media screen and (max-width: 375px) {
+    h1 {
+        font-size: 1.6em;
+    }
+
+}
