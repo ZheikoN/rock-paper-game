@@ -74,6 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })
 
+/**
+ * This function is being run every time a game is selected and clears all scores and progress creating clean canvas for next game
+ */
+
 function clearHistory() {
     playerHistory = [];
     oponentHistory = [];
@@ -89,6 +93,11 @@ function clearHistory() {
     document.getElementById('player-select-current').innerText = ``;
     document.getElementById('oponent-select-current').innerText = ``;
 }
+
+/**
+ * 
+ * Function ensures that max of 10 fields are being displayed in the history log
+ */
 
 function dropHistory(history) {
     if (history.length === 10) history.pop();
@@ -113,38 +122,15 @@ function calculateScore(finalResult) {
  */
 function displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw) {
     document.getElementById('result').innerText = `${finalResult}`;
-    document.getElementById('win').innerText = `Your win count: ${scorePlayer}`;
+    document.getElementById('win').innerText = `Your win: ${scorePlayer}`;
     document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
-    document.getElementById('loss').innerText = `Oponent win count: ${scoreOponent}`;
+    document.getElementById('loss').innerText = `Oponent win: ${scoreOponent}`;
 
 }
 
 /**
- * Function replaces written string result for a HTML code that shows picture for player's turn
+ * 
  */
-// function displayPlayerHand(playerHand) {
-//     const img = `<img src="assets/images/${playerHand}.jpg" alt="${playerHand}"><br>`;
-    
-//     playerHistory.push(img);
-//     for (let record of playerHistory) {
-//         playerSelect.innerHTML = 'You played:<br>' + playerHistory;
-//     };
-// }
-
-
-/**
- * Function replaces written string result for a HTML code that shows picture for oponent's turn
- */
-// function displayOponentHand(oponentHand) {
-
-//     const img = `<img src="assets/images/${oponentHand}.jpg" alt="${oponentHand}"><br>`;
-    
-//     oponentHistory.push(img);
-//     for (let record of oponentHistory) {
-//         oponentSelect.innerHTML = 'Oponent played:<br>' + oponentHistory;
-//     };
-// }
-
 
 function displayHand(hand, history, target, currentTarget) {
 
@@ -157,6 +143,9 @@ function displayHand(hand, history, target, currentTarget) {
     }
 }
 
+/**
+ * Runs standard game
+ */
 
 function launchStandardGame() {
     clearHistory();
@@ -165,8 +154,11 @@ function launchStandardGame() {
     document.getElementById('spock').style.display = "none";
     standardGameRules();
     oponentSignAdvanced();
-
 }
+
+/**
+ * Runs advanced game
+ */
 
 function launchAdvancedGame() {
     clearHistory();

@@ -5,20 +5,21 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     background-color: aqua;
     height: 100%;
     font-family: "Nunito", sans-serif;
 }
 
-header{
+header {
     height: 5%;
     width: 100%;
     background-color: rgb(63, 172, 167);
 }
 
 main {
-    height: 90%;
+    min-height: 90%;
     width: 100%;
     background-color: rgb(255, 255, 255);
     position: relative;
@@ -30,20 +31,22 @@ main {
 footer {
     height: 5%;
     width: 100%;
-    background-color: rgb(63, 172, 167);;
+    background-color: rgb(63, 172, 167);
 }
 
 h1 {
     text-align: center;
 }
 
-h2, h3, p {
+h2,
+h3,
+p {
     margin-bottom: 5px;
 }
 
 .game-area {
-    width: 80%;
-    flex: 0 0 80%;
+    width: 100%;
+    display: block;
 }
 
 .help {
@@ -65,12 +68,12 @@ h2, h3, p {
     display: none;
 }
 
-.help:hover + .rules {
+.help:hover+.rules {
     display: block;
     position: absolute;
     right: 40px;
     top: 40px;
-    width: 20%;
+    width: 85vw;
     box-sizing: border-box;
     text-align: center;
     padding: 25px;
@@ -82,9 +85,7 @@ h2, h3, p {
 
 .actual-game {
     text-align: center;
-    display: flex;
     justify-content: space-evenly;
-    height: 250px;
 }
 
 .btn-play {
@@ -126,9 +127,8 @@ h2, h3, p {
 .messageboard {
     position: relative;
     width: 100%;
+    height: 100px;
     text-align: center;
-    height: 50px;
-    bottom: 2px;
     font-family: 'Chewy', Arial, Helvetica, sans-serif;
 }
 
@@ -137,21 +137,18 @@ h2, h3, p {
     height: 10%;
     margin: 0 auto;
     text-align: center;
-    
+
 }
 
 .results {
     width: 100%;
-    height: 250px;
     position: relative;
     display: grid;
-    transition: 500ms;
 }
 
 .game-current {
     width: 100%;
     position: relative;
-
 }
 
 .game-current img {
@@ -177,6 +174,7 @@ h2, h3, p {
     width: 33%;
     text-align: center;
     float: right;
+    
 }
 
 .game-log-player {
@@ -189,6 +187,7 @@ h2, h3, p {
     width: 33%;
     text-align: center;
     float: right;
+
 }
 
 .game-log-center {
@@ -197,9 +196,9 @@ h2, h3, p {
 }
 
 .reset-game-container {
-    width: 10%;
-    margin: 0 auto;
-    text-align: center;    
+    width: 100%;
+    position: relative;
+    text-align: center;
 }
 
 .reset-game-container button {
@@ -221,7 +220,7 @@ h2, h3, p {
 .reset-game-container button:active {
     background-color: rgb(25, 69, 66);
     transform: translateY(4px);
-  }
+}
 
 .game-btn {
     border: none;
@@ -231,6 +230,7 @@ h2, h3, p {
     background-color: rgb(63, 172, 167);
     font-family: 'Chewy', Arial, Helvetica, sans-serif;
     box-shadow: 0px 0px 10px rgb(0, 3, 3);
+    margin: 5px;
 }
 
 .game-btn:hover {
@@ -241,4 +241,20 @@ h2, h3, p {
 .game-btn:active {
     background-color: rgb(25, 69, 66);
     transform: translateY(4px);
-  }
+}
+
+@media screen and (max-width: 450px) {
+    .game-log-center {
+        display: none;
+    }
+
+    #draw {
+        display: none;
+    }
+
+    .messageboard {
+        height: 150px;
+    }
+
+}
+
