@@ -199,7 +199,6 @@ p {
     width: 33%;
     text-align: center;
     float: right;
-    
 }
 
 .game-log-player {
@@ -212,7 +211,6 @@ p {
     width: 33%;
     text-align: center;
     float: right;
-
 }
 
 .game-log-center {
@@ -290,9 +288,9 @@ p {
         font-size: small;
     }
 }
+
 @media screen and (max-width: 375px) {
     h1 {
         font-size: 1.6em;
     }
-
 }
