@@ -134,7 +134,7 @@ function displayHand(hand, history, target, currentTarget) {
 
     const img = `<img src="assets/images/${hand}.jpg" alt="${hand}"><br>`;
     history.unshift(img);
-     
+
     for (let record of history) {
         document.getElementById(currentTarget).innerHTML = `<span style='opacity: 1'>${history[0]}</span><br>`;
         document.getElementById(target).innerHTML = `<span style='opacity: 0.5'>${history}</span><br>`;
@@ -209,9 +209,17 @@ function advancedGameRules() {
 
 function oponentSignAdvanced(multiplier) {
     const oponentSelection = Math.floor(Math.random() * multiplier);
-    if (oponentSelection === 0) { return 'rock';}
-    if (oponentSelection === 1) { return 'paper';}
-    if (oponentSelection === 2) { return 'scissors';}
-    if (oponentSelection === 3) { return 'lizard';}
+    if (oponentSelection === 0) {
+        return 'rock';
+    }
+    if (oponentSelection === 1) {
+        return 'paper';
+    }
+    if (oponentSelection === 2) {
+        return 'scissors';
+    }
+    if (oponentSelection === 3) {
+        return 'lizard';
+    }
     return 'spock';
 }
