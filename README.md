@@ -101,6 +101,9 @@ This game will automatically decide who is the winner, log the amount of wins of
 - When rules are selected on certain older tiny mobile devices, the rules go under footer
     - site only optimized for 300px wide devices, narrower needs further optimization to avoid this
 
+- Currently played hand is also appearing as first line in history tab
+    - This should not be happening and only older games should appear
+
 ## Deployment
 
 -   The website has been deployed to GitHub Pages. Steps followed:
