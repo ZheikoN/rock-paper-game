@@ -34,7 +34,7 @@ const index = {
         lizard: 'Lizard poisons Spock, you lose!',
         spock: 'Spock + Spock? I guess thats a draw then!',
     },
-}
+};
 const rule = document.getElementById('rule');
 const playerSelect = document.getElementById('player-select');
 const oponentSelect = document.getElementById('oponent-select');
@@ -70,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
             calculateScore(finalResult);
             dropHistory(playerHistory);
             dropHistory(oponentHistory);
-        })
+        });
     }
-})
+});
 
 /**
  * This function is being run every time a game is selected and clears all scores and progress creating clean canvas for next game
@@ -149,7 +149,7 @@ function displayHand(hand, history, target, currentTarget) {
 
 function launchStandardGame() {
     clearHistory();
-    document.getElementById('game-container').style.display = "flex"
+    document.getElementById('game-container').style.display = "flex";
     document.getElementById('lizard').style.display = "none";
     document.getElementById('spock').style.display = "none";
     standardGameRules();
@@ -162,7 +162,7 @@ function launchStandardGame() {
 
 function launchAdvancedGame() {
     clearHistory();
-    document.getElementById('game-container').style.display = "flex"
+    document.getElementById('game-container').style.display = "flex";
     document.getElementById('lizard').style.display = "block";
     document.getElementById('spock').style.display = "block";
     advancedGameRules();
@@ -201,7 +201,7 @@ function advancedGameRules() {
     <p>Lizard eats Paper</p>
     <p>Paper disproves Spock</p>
     <p>Spock vaporizes Rock</p>
-    <p>(and as it always has) Rock crushes Scissors</p>`
+    <p>(and as it always has) Rock crushes Scissors</p>`;
 }
 
 function oponentSignAdvanced(multiplier) {
