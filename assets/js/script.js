@@ -45,7 +45,6 @@ let playerHistory = [];
 let oponentHistory = [];
 let isRockPaperScissors = true;
 
-
 document.getElementById('standard-game-btn').addEventListener("click", function () {
     isRockPaperScissors = true;
     launchStandardGame();
@@ -125,11 +124,10 @@ function displayResult(finalResult, scorePlayer, scoreOponent, scoreDraw) {
     document.getElementById('win').innerText = `Your win: ${scorePlayer}`;
     document.getElementById('draw').innerText = `Draw: ${scoreDraw}`;
     document.getElementById('loss').innerText = `Oponent win: ${scoreOponent}`;
-
 }
 
 /**
- * 
+ * stores played hand into an array to display it in history scoreboard
  */
 
 function displayHand(hand, history, target, currentTarget) {
@@ -203,6 +201,11 @@ function advancedGameRules() {
     <p>Spock vaporizes Rock</p>
     <p>(and as it always has) Rock crushes Scissors</p>`;
 }
+
+/**
+ * Random generator assigning a value to the lookup table
+ * 
+ */
 
 function oponentSignAdvanced(multiplier) {
     const oponentSelection = Math.floor(Math.random() * multiplier);
