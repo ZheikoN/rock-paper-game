@@ -118,13 +118,6 @@ This game will automatically decide who is the winner, log the amount of wins of
 - Currently played hand is also appearing as first line in history tab
     - This should not be happening and only older games should appear
 
-- During testing 2 testers reported that question mark did not show the rules and did not show the on hover window
-    - I could not replicate this issue testing on various browsers and devices.
-    - Tester 1 reported this issue to be present only on Mobile Safari. My own testing with safari worked 100%
-    - Tester 2 reported this issue to be present on Chrome. Chrome was the main tool used for testing by myself and I could not replicate the issue.
-    
-    Conclusion: This requires further testing, but considering that this was a small portion of testers that had issue with the display, it appears to be a user setting. In future, this feature will most likely get reworked into more elegant solution to avoid this issue altogether.
-
 ## Deployment
 
 -   The website has been deployed to GitHub Pages. Steps followed:
