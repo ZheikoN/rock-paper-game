@@ -38,12 +38,14 @@ const index = {
 const rule = document.getElementById('rule');
 const playerSelect = document.getElementById('player-select');
 const oponentSelect = document.getElementById('oponent-select');
+const help = document.getElementById('rule');
 let scorePlayer = 0;
 let scoreOponent = 0;
 let scoreDraw = 0;
 let playerHistory = [];
 let oponentHistory = [];
 let isRockPaperScissors = true;
+let helpShow = true;
 
 document.getElementById('standard-game-btn').addEventListener("click", function () {
     isRockPaperScissors = true;
@@ -222,4 +224,17 @@ function oponentSignAdvanced(multiplier) {
         return 'lizard';
     }
     return 'spock';
+}
+/**
+ * Toggle help display on click
+ */
+
+function displayHelp() {
+    if (helpShow) {
+        help.style.display = "block";
+        helpShow = false;
+    } else {
+        help.style.display = "none";
+        helpShow = true;
+    }
 }

@@ -14,6 +14,7 @@ body {
 
 header {
     height: 5%;
+    min-height: 1.3em;
     width: 100%;
     background-color: rgb(63, 172, 167);
     color: white;
@@ -71,10 +72,10 @@ p {
     display: block;
 }
 
-.help {
+.help button {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 20px;
     border-radius: 50%;
     border: 1px black solid;
     background-color: yellow;
@@ -88,14 +89,12 @@ p {
 
 .rules {
     display: none;
-}
-
-.help:hover+.rules {
-    display: block;
     position: absolute;
     right: 40px;
     top: 40px;
     width: 85vw;
+    max-height: 80vh;
+    overflow: scroll;
     box-sizing: border-box;
     text-align: center;
     padding: 25px;
@@ -267,14 +266,7 @@ p {
     transform: translateY(4px);
 }
 
-@media screen and (max-width: 450px) {
-    .game-log-center {
-        display: none;
-    }
-
-    #draw {
-        display: none;
-    }
+@media screen and (max-width: 550px) {
 
     .messageboard {
         height: 150px;
@@ -284,7 +276,7 @@ p {
         margin-bottom: 0;
     }
 
-    .help:hover+.rules {
+    .rules {
         font-size: small;
     }
 }
@@ -292,5 +284,17 @@ p {
 @media screen and (max-width: 375px) {
     h1 {
         font-size: 1.6em;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    h1 {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    h1 {
+        font-size: 1.0em;
     }
 }
