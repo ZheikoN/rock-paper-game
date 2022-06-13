@@ -85,12 +85,10 @@ This game will automatically decide who is the winner, log the amount of wins of
     - [image](./assets/readme/validation/css.png)
 
 -   **JavaScript**
+    - no errors found using [jshint.com](https://jshint.com/)
     - There are 15 functions in this file.
-
     - Function with the largest signature take 4 arguments, while the median is 0.
-
     - Largest function has 13 statements in it, while the median is 4.
-
     - The most complex function has a cyclomatic complexity value of 5 while the median is 1.
 
 ### Tested devices
