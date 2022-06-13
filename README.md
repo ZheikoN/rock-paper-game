@@ -92,6 +92,20 @@ This game will automatically decide who is the winner, log the amount of wins of
     - Largest function has 13 statements in it, while the median is 4.
     - The most complex function has a cyclomatic complexity value of 5 while the median is 1.
 
+### Tested devices
+
+-   Tested on OS:
+    - Win 10
+    - Win 11
+    - MacOS Monterey (12.4)
+    - Android
+    - iOS (iPhone 12)
+-   Test browsers
+    - Chrome
+    - Safari
+    - MS Edge
+    - Brave
+
 ### Known bugs
 
 - Bug when game is restarted by pressing reset button, rules no longer appear
@@ -103,6 +117,13 @@ This game will automatically decide who is the winner, log the amount of wins of
 
 - Currently played hand is also appearing as first line in history tab
     - This should not be happening and only older games should appear
+
+- During testing 2 testers reported that question mark did not show the rules and did not show the on hover window
+    - I could not replicate this issue testing on various browsers and devices.
+    - Tester 1 reported this issue to be present only on Mobile Safari. My own testing with safari worked 100%
+    - Tester 2 reported this issue to be present on Chrome. Chrome was the main tool used for testing by myself and I could not replicate the issue.
+    
+    Conclusion: This requires further testing, but considering that this was a small portion of testers that had issue with the display, it appears to be a user setting. In future, this feature will most likely get reworked into more elegant solution to avoid this issue altogether.
 
 ## Deployment
 
@@ -121,6 +142,7 @@ The live link can be found here https://zheikon.github.io/rock-paper-game/
 -   Display Properties Tutorial - https://www.youtube.com/watch?v=Qf-wVa9y9V4&t=70s&ab_channel=WebDevSimplified
 -   Refactoring JavaScript - https://www.youtube.com/watch?v=J18mLs-SRpI&ab_channel=GrouponOnAir
 -   Flexbox in 15 minutes - https://www.youtube.com/watch?v=fYq5PXgSsbE&ab_channel=WebDevSimplified
+-   Dealing with hover on mobile - https://www.youtube.com/watch?v=uuluAyw9AI0&ab_channel=KevinPowell
 
 ### Credits
 -   Massive thank you to Mr_Bim_Alumni from Code Institute for helping me understand passing values between functions!
