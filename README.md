@@ -60,8 +60,7 @@ This game will automatically decide who is the winner, log the amount of wins of
 
 -   **Rules and Help Section**
     - If users need help understanding the rules of the selected game they can chose to see the rules directly on the page
-    - on Desktop, this appears after hovering mouse over a questionmark
-    - on Mobile, this needs to be tapped. Tapping anywhere else on the page will make the rules disappear
+    - clickable button will show the rules for selected game
   
     ![](./assets/readme/features/help.png)
 
